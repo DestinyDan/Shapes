@@ -1,15 +1,15 @@
 package org.cvtc.shapes;
 
-import javax.swing.*;
-
-public class Sphere extends Shape {
+public class Sphere extends Shape implements Renderer {
 
     // fields
     private float radius = 0.0f;
     private float pi = (float) Math.PI;
 
+
     // constructor
-    public Sphere(float radius) {
+    public Sphere(Dialog messageBox, float radius) {
+    	super(messageBox);
         this.radius = radius;
 
     }
@@ -25,13 +25,13 @@ public class Sphere extends Shape {
         return (4.0f/3.0f) * pi * (radius * radius * radius);
     }
 
-    @Override
+    // render method
     public void render() {
-        JOptionPane.showMessageDialog(null, "Dimensions \n" +
-                        "Radius: " + String.format("%.2f", radius) + "\n" +
-                        "Surface Area: " + String.format("%.2f", surfaceArea()) + "\n" +
-                        "Volume: " + String.format("%.2f", volume()),
-                "Sphere", JOptionPane.PLAIN_MESSAGE);
+    	messageBox.show("Dimensions " + "\n" +
+		                "Radius: " + String.format("%.2f", this.radius) + "\n" +
+		                "Surface Area: " + String.format("%.2f", this.surfaceArea()) + "\n" +
+		                "Volume: " + String.format("%.2f", this.volume()),
+		        		"Cylinder");
     }
 
 
@@ -39,6 +39,7 @@ public class Sphere extends Shape {
     public float getRadius() {
         return radius;
     }
+    
     private void setRadius(float radius) {
         this.radius = radius;
     }

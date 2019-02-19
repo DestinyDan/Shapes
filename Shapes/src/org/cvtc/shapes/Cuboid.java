@@ -1,9 +1,7 @@
 package org.cvtc.shapes;
 
-import javax.swing.*;
 
-
-public class Cuboid extends Shape {
+public class Cuboid extends Shape implements Renderer {
 
     // fields
     private float width = 0.0f;
@@ -11,7 +9,8 @@ public class Cuboid extends Shape {
     private float depth = 0.0f;
 
     // constructor
-    public Cuboid(float width, float height, float depth){
+    public Cuboid(Dialog messageBox, float width, float height, float depth){
+    	super(messageBox);
         this.width = width;
         this.height = height;
         this.depth = depth;
@@ -29,15 +28,16 @@ public class Cuboid extends Shape {
         return (width * height * depth);
     }
 
+    // render method
     @Override
     public void render() {
-        JOptionPane.showMessageDialog(null, "Dimensions \n" +
-                        "Width: " + String.format("%.2f", width) + "\n" +
-                        "Height: " + String.format("%.2f", height) + "\n" +
-                        "Depth: " + String.format("%.2f", depth) + "\n" +
-                        "Surface Area: " + String.format("%.2f", surfaceArea()) + "\n" +
-                        "Volume: " + String.format("%.2f", volume()),
-                "Cuboid", JOptionPane.PLAIN_MESSAGE);
+        messageBox.show("Dimensions " + "\n" +
+                        "Width: " + String.format("%.2f", this.width) + "\n" +
+                        "Height: " + String.format("%.2f", this.height) + "\n" +
+                        "Depth: " + String.format("%.2f", this.depth) + "\n" +
+                        "Surface Area: " + String.format("%.2f", this.surfaceArea()) + "\n" +
+                        "Volume: " + String.format("%.2f", this.volume()),
+                        "Cuboid");
     }
 
     // getters & setters

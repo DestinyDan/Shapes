@@ -8,6 +8,8 @@ public class ShapesTest {
         // import scanner for user input
         Scanner keyboard = new Scanner(System.in);
 
+        	Dialog messageBox = new MessageBox();
+        
 	        // ask user for input
 	        System.out.println("Please enter Width: ");
 	        // store width in w
@@ -27,16 +29,16 @@ public class ShapesTest {
 	
 	
 	        // create shape objects
-	        //-- cube
-	        Cuboid newCuboid = new Cuboid(w, h, d);
+	        //-- cuboid
+	        Cuboid newCuboid = new Cuboid(messageBox, w, h, d);
 	        newCuboid.render();
 	
 	        //-- cylinder
-	        Cylinder newCylinder = new Cylinder(r, h);
+	        Cylinder newCylinder = new Cylinder(messageBox, r, h);
 	        newCylinder.render();
 	
 	        //-- sphere
-	        Sphere newSphere = new Sphere(r);
+	        Sphere newSphere = new Sphere(messageBox, r);
 	        newSphere.render();
 	        
     } //-- end main

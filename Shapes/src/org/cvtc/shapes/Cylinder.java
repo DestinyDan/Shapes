@@ -1,8 +1,6 @@
 package org.cvtc.shapes;
 
-import javax.swing.*;
-
-public class Cylinder extends Shape {
+public class Cylinder extends Shape implements Renderer {
 
     // fields
     private float radius = 0.0f;
@@ -10,7 +8,8 @@ public class Cylinder extends Shape {
     private float pi = (float) Math.PI;
 
     // constructor
-    public Cylinder(float radius, float height) {
+    public Cylinder(Dialog messageBox, float radius, float height) {
+    	super(messageBox);
         this.radius = radius;
         this.height = height;
 
@@ -27,14 +26,15 @@ public class Cylinder extends Shape {
         return pi * (radius * radius) * height;
     }
 
+    // render method
     @Override
     public void render() {
-        JOptionPane.showMessageDialog(null, "Dimensions \n" +
-                        "Radius: " + String.format("%.2f", radius) + "\n" +
-                        "Height: " + String.format("%.2f", height) + "\n" +
-                        "Surface Area: " + String.format("%.2f", surfaceArea()) + "\n" +
-                        "Volume: " + String.format("%.2f", volume()),
-                "Cylinder", JOptionPane.PLAIN_MESSAGE);
+        messageBox.show("Dimensions " + "\n" +
+                        "Radius: " + String.format("%.2f", this.radius) + "\n" +
+                        "Height: " + String.format("%.2f", this.height) + "\n" +
+                        "Surface Area: " + String.format("%.2f", this.surfaceArea()) + "\n" +
+                        "Volume: " + String.format("%.2f", this.volume()),
+                		"Cylinder");
     }
 
     // getters & setters
